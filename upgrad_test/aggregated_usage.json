@@ -22,28 +22,6 @@
         }
     },
     {
-        "project_name": "planning",
-        "crew_name": "planning_crew",
-        "usage_metrics": {
-            "total_tokens": 5533,
-            "prompt_tokens": 4209,
-            "cached_prompt_tokens": 0,
-            "completion_tokens": 1324,
-            "successful_requests": 1
-        }
-    },
-    {
-        "project_name": "planning",
-        "crew_name": "problem_statement_crew",
-        "usage_metrics": {
-            "total_tokens": 3048,
-            "prompt_tokens": 1936,
-            "cached_prompt_tokens": 0,
-            "completion_tokens": 1112,
-            "successful_requests": 1
-        }
-    },
-    {
         "execution_id": "933fd861-0446-4093-9d66-bdb931b0c49e",
         "project_name": "upgrad_test",
         "created_by": "labuser",
@@ -54,6 +32,6 @@
         "prompt": "need a todo app"
     },
     {
-        "Application_duration": 0.78
+        "Application_duration": 0.03
     }
 ]
