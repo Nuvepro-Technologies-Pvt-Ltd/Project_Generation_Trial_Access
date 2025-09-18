@@ -1,0 +1,145 @@
+{
+    "id": "ab5f5f1f-dc96-4f89-8d96-c95bd4e05d71",
+    "name": "to_do_demo",
+    "description": "Detailed specification for generating a Project using Generative AI",
+    "schema": "2.0",
+    "owner": "Nuvepro",
+    "created_by": "labuser",
+    "created_on": "2025-09-18T07:00:40.622094",
+    "modified_by": "labuser",
+    "modified_on": "2025-09-18T07:01:43.874263",
+    "published_on": "",
+    "category": "",
+    "version": "to_do_demo",
+    "locale": "en_US",
+    "plan_spec": {
+        "tech_domain": "Web Application Development",
+        "tech_subdomain": "Frontend Development",
+        "application_domain": "Productivity",
+        "application_subdomain": "to_do_list",
+        "target_audience": "Beginner to Intermediate Full Stack Developers interested in building productivity tools",
+        "difficulty_level": "Beginner",
+        "time_constraints": "1 week",
+        "prerequisites": [
+            "Basic understanding of JavaScript",
+            "Familiarity with React.js fundamentals",
+            "Knowledge of RESTful APIs",
+            "Basic HTML & CSS"
+        ],
+        "scope": [
+            "React component design",
+            "State management in React",
+            "CRUD operations integration",
+            "API connectivity (frontend to backend)",
+            "User interaction and feedback",
+            "Styling with CSS/React frameworks"
+        ],
+        "feature_set": [
+            "Create, read, update, and delete (CRUD) to-do items",
+            "Mark to-do items as completed",
+            "Edit existing to-do items",
+            "Delete single or all to-do items",
+            "Display active, completed, and all to-do lists",
+            "Basic responsive design"
+        ],
+        "problem_statement_style": "scenario",
+        "projects": [
+            {
+                "project_name": "to_do_list_react",
+                "tech_domain": "Web Application Development",
+                "tech_subdomain": "Frontend Development",
+                "skill": "javascript_react",
+                "tech_stack": {
+                    "language": {
+                        "JavaScript": "ES6+"
+                    },
+                    "framework": {
+                        "React": "^18.x",
+                        "React Router": "^6.x"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "Jest": "used for component/unit tests",
+                        "React Testing Library": "for component behavior and UI testing"
+                    },
+                    "integration_testing": null,
+                    "end_to_end_or_api_testing": {
+                        "Cypress": "optionally for user flow e2e tests"
+                    }
+                },
+                "scope": {
+                    "Core concepts": [
+                        "React functional components",
+                        "useState and useEffect hooks",
+                        "Props and state",
+                        "Conditional rendering",
+                        "Event handling",
+                        "Controlled components",
+                        "Component composition"
+                    ],
+                    "Advanced concepts": [
+                        "Separation of concerns (UI, logic)",
+                        "Reusable component design",
+                        "Asynchronous data fetching (if connecting to backend API)",
+                        "Basic routing for list views"
+                    ]
+                },
+                "prerequisites": [
+                    "Node.js (v16+)",
+                    "npm or yarn package manager",
+                    "Code editor (Visual Studio Code recommended)",
+                    "Basic command line skills"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Windows 10+, macOS Monterey+, Ubuntu 20.04+"
+                },
+                "learning_outcomes": [
+                    "Build a functional interactive frontend web app with React",
+                    "Apply state management and React hooks in a real scenario",
+                    "Design and compose reusable UI components",
+                    "Integrate basic UI testing strategies for React apps",
+                    "Develop basic CRUD user interaction flows"
+                ],
+                "feature_set": [
+                    "Adds new to-do",
+                    "Edit and update to-do content",
+                    "Delete individual to-dos",
+                    "Mark as completed/active",
+                    "Clear all completed items",
+                    "Filter/view to-dos by status"
+                ],
+                "api_documentation": null,
+                "output_resource_type": "code",
+                "dependency_type": null
+            }
+        ],
+        "acceptance_criteria": [
+            "Users can add a new to-do item via a simple form.",
+            "All to-dos are listed in a user-friendly UI and persist during session (use local state or localStorage).",
+            "Users can mark items as completed or undone.",
+            "Editing a to-do item updates its content immediately.",
+            "Deleting single or all tasks removes them from view.",
+            "Responsive layout adapts to mobile and desktop screens.",
+            "Basic tests run and pass for main components and user flows."
+        ],
+        "deliverables": [
+            "React-based to-do list application source code",
+            "ReadMe documentation with setup and usage instructions",
+            "Test cases for core components (minimum: input form, to-do item, list rendering)",
+            "Screenshots/demos showing app functionality"
+        ],
+        "need_research": "False",
+        "learning_outcomes": [
+            "Practical React app building skills",
+            "Understand component-based UI design",
+            "Hands-on CRUD operations integration",
+            "Front-end testing basics"
+        ],
+        "learning_style": "guided",
+        "assessment_type": null,
+        "user_prompt": "help me create a to do list app",
+        "problem_statement": "Problem Statement: Building a Responsive To-Do List Productivity Web Application (Scenario-Based)\n\nScenario — Industry Challenge in Productivity\nYou are a Junior Frontend Developer who has just joined \"EfficientlyYou,\" a rapidly growing productivity SaaS startup. The company's mission is to empower users to seamlessly manage their daily tasks and increase day-to-day productivity through an easy-to-use, responsive to-do list web app. Amidst increased remote work and scattered task management tools, EfficientlyYou seeks to deliver a focused solution that helps users stay on top of their goals, minimize distractions, and quickly adapt to shifting priorities. As part of your first assignment, you are tasked with creating an interactive, productivity-focused to-do list web application using React. The app must make it intuitive for users to manage their tasks from any device and foster a modern digital workspace.\n\nProject Objective:\nDesign and implement, within a 1-week sprint, a robust, user-friendly to-do list web application using React that will allow users to create, view, update, and delete their tasks, mark tasks as completed, edit tasks efficiently, clear single or all items, and filter their list based on active/completed/all status—all while ensuring a responsive interface for mobile and desktop users.\n\nDeliverables:\nA complete React-based web application repository (with installation and run instructions), and a short written summary explaining your component design decisions and test coverage.\n\nFeature Requirements (Strictly Adhere To):\n\n- Create, read, update, and delete (CRUD) to-do items\n- Mark to-do items as completed\n- Edit existing to-do items (inline or via modal)\n- Delete single or all to-do items\n- Display lists based on: active, completed, or all items\n- Basic responsive design (mobile/tablet/desktop-friendly, using CSS or a UI framework)\n\nLearning Outcomes:\nThis project is specifically designed for Beginner to Intermediate Full Stack Developers (assumed familiar with JavaScript, npm, and basic React concepts). Completing the assignment will demonstrate:\n\n- Practical React app building skills: Develop a working web app tool using React functional components and hooks.\n- Understanding of component-based UI design: Break down features into reusable, maintainable React components.\n- Hands-on CRUD operations integration: Implement full CRUD lifecycle management of tasks using state and props.\n- Front-end testing basics: Write at least one simple test per main UI component (using Jest/React Testing Library or similar; e.g., rendering and task creation).\n\nProject Execution Plan\n(This plan structures the 1-week timeline and matches your experience level.)\n\nDay 1: Setup and Component Planning\n- Initialize a new React app (using Create React App or Vite).\n- Design your component hierarchy (e.g., App, ToDoList, ToDoItem, ToDoFilter, ToDoInput).\n- Create static component files and basic layout.\n\nDay 2: Implement Core CRUD Functionality\n- Develop the ToDoList and ToDoItem components.\n- Add state management for tasks (using useState/useReducer).\n- Implement \"create,\" \"read,\" and \"delete\" functionality for to-do items.\n\nDay 3: Update, Edit, and Completion Features\n- Add editing of existing to-do items (double-click to edit or an 'Edit' button).\n- Implement \"mark as completed\" functionality (toggle checkbox/icon).\n- Style completed items differently for clear visual distinction.\n\nDay 4: Filtering and Bulk Actions\n- Add filter buttons/tabs to switch between active, completed, and all to-do views.\n- Implement \"delete all\" functionality and support for deleting completed items only.\n\nDay 5: Basic Responsive Design\n- Apply a CSS solution (plain CSS, CSS Modules, or a framework like Bootstrap/Tailwind) for layout and responsiveness.\n- Ensure the app looks and works well on mobile and desktop screens.\n\nDay 6: Front-End Testing\n- Set up a basic test suite (using Jest and React Testing Library or similar).\n- Write simple tests for main components: rendering, adding, marking, and deleting items.\n\nDay 7: Review, Documentation, and Submission\n- Refactor code for clarity, comment important logic, and ensure all listed features work.\n- Write a concise summary (1-2 paragraphs) explaining your component design and test approach.\n- Add clear installation and run instructions to the README.\n\nEvaluation Rubric (Self-Checklist)\n- All required features are present and function as described.\n- Codebase is structured with clear, reusable components.\n- The UI is responsive and accessible.\n- At least one test per main component passes.\n- Code quality (formatting, naming, comments).\n- README includes install/run steps and a design summary.\n\nAssumptions & Target Audience Alignment:\nYou are at a beginner to intermediate level, comfortable with JS, npm, and basic React development. No backend setup is required (local state only). The design and features fit the real-world needs of productivity enthusiasts and remote workers seeking to optimize their daily workflow with a straightforward digital task organizer.\n\nTechnology Focus:\n- Web Application Development (Frontend only)\n- React with functional components, hooks, and basic state management\n- CSS (your choice of implementation)\n- Optional: One testing library for component/unit tests\n\nKey Constraints:\n- Do not add features beyond the specified set.\n- Keep the project self-contained (no backend, no API).\n- Do not implement authentication, user management, or non-productivity features.\n- Focus all effort on delivering the best possible productivity to-do list web app with a modern, responsive frontend and reliable core functionality.\n\nBy completing this challenge, you will:\n- Build practical skills in React development from scratch (installation to deployment).\n- Cement your understanding of component-based architecture and props/state flows.\n- Master CRUD operations in the context of a productivity tool.\n- Practice best practices for UI testing and build confidence for future full-stack projects.\n\nThis project simulates an authentic industry scenario and will prepare you to contribute meaningfully to productivity-focused web applications while reinforcing all essential web frontend skills for your level."
+    }
+}

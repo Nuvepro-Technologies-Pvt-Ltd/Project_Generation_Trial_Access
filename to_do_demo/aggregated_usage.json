@@ -1,0 +1,59 @@
+[
+    {
+        "profile": "upgrad_setting",
+        "crew_llm": {
+            "config": "OPENAI_GPT_4_1",
+            "planning": "OPENAI_GPT_4_1",
+            "research": "OPENAI_GPT_4_1",
+            "solution": "OPENAI_GPT_4_1",
+            "stub_code": "OPENAI_GPT_4_1",
+            "test_case": "OPENAI_GPT_4_1",
+            "partial_code": "OPENAI_GPT_4_1",
+            "solution_review": "OPENAI_GPT_4_1",
+            "problem_statement": "OPENAI_GPT_4_1",
+            "research_with_tool": "OPENAI_GPT_4_1",
+            "modules_and_activities": "OPENAI_GPT_4_1"
+        },
+        "api_keys": {
+            "ANTHROPIC_API_KEY": "",
+            "PERPLEXITYAI_API_KEY": "",
+            "GEMINI_API_KEY": "",
+            "OPENAI_API_KEY": "**********YdigA"
+        }
+    },
+    {
+        "project_name": "planning",
+        "crew_name": "planning_crew",
+        "usage_metrics": {
+            "total_tokens": 5222,
+            "prompt_tokens": 4213,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 1009,
+            "successful_requests": 1
+        }
+    },
+    {
+        "project_name": "planning",
+        "crew_name": "problem_statement_crew",
+        "usage_metrics": {
+            "total_tokens": 3178,
+            "prompt_tokens": 1951,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 1227,
+            "successful_requests": 1
+        }
+    },
+    {
+        "execution_id": "ab5f5f1f-dc96-4f89-8d96-c95bd4e05d71",
+        "project_name": "to_do_demo",
+        "created_by": "labuser",
+        "created_on": "2025-09-18T07:00:40.622094",
+        "modified_by": "labuser",
+        "modified_on": "2025-09-18T07:01:43.874263",
+        "owner": "Nuvepro",
+        "prompt": "help me create a to do list app"
+    },
+    {
+        "Application_duration": 1.07
+    }
+]
