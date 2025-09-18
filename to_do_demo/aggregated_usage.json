@@ -22,25 +22,58 @@
         }
     },
     {
-        "project_name": "planning",
-        "crew_name": "planning_crew",
+        "project_name": "to_do_list_react",
+        "crew_name": "modules_and_activities_crew",
         "usage_metrics": {
-            "total_tokens": 5222,
-            "prompt_tokens": 4213,
+            "total_tokens": 5913,
+            "prompt_tokens": 4895,
             "cached_prompt_tokens": 0,
-            "completion_tokens": 1009,
+            "completion_tokens": 1018,
             "successful_requests": 1
         }
     },
     {
-        "project_name": "planning",
-        "crew_name": "problem_statement_crew",
+        "project_name": "to_do_list_react",
+        "crew_name": "solution_crew",
         "usage_metrics": {
-            "total_tokens": 3178,
-            "prompt_tokens": 1951,
+            "total_tokens": 103364,
+            "prompt_tokens": 88465,
+            "cached_prompt_tokens": 6016,
+            "completion_tokens": 14899,
+            "successful_requests": 12
+        }
+    },
+    {
+        "project_name": "to_do_list_react",
+        "crew_name": "code_stubs_crew",
+        "usage_metrics": {
+            "total_tokens": 94952,
+            "prompt_tokens": 79169,
             "cached_prompt_tokens": 0,
-            "completion_tokens": 1227,
-            "successful_requests": 1
+            "completion_tokens": 15783,
+            "successful_requests": 45
+        }
+    },
+    {
+        "project_name": "to_do_list_react",
+        "crew_name": "partial_code_crew",
+        "usage_metrics": {
+            "total_tokens": 114573,
+            "prompt_tokens": 81284,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 33289,
+            "successful_requests": 45
+        }
+    },
+    {
+        "project_name": "to_do_list_react",
+        "crew_name": "testcases_crew",
+        "usage_metrics": {
+            "total_tokens": 408715,
+            "prompt_tokens": 324487,
+            "cached_prompt_tokens": 75520,
+            "completion_tokens": 84228,
+            "successful_requests": 90
         }
     },
     {
@@ -54,6 +87,6 @@
         "prompt": "help me create a to do list app"
     },
     {
-        "Application_duration": 1.07
+        "Application_duration": 21.44
     }
 ]
