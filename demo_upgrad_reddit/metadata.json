@@ -1,0 +1,417 @@
+{
+    "id": "41e8ebee-c4e6-4aca-b286-a422c38203da",
+    "name": "demo_upgrad_reddit",
+    "description": "Detailed specification for generating a Project using Generative AI",
+    "schema": "2.0",
+    "owner": "Nuvepro",
+    "created_by": "labuser",
+    "created_on": "2025-09-24T11:47:44.845557",
+    "modified_by": "labuser",
+    "modified_on": "2025-09-24T11:49:10.979052",
+    "published_on": "",
+    "category": "",
+    "version": "demo_upgrad_reddit",
+    "locale": "en_US",
+    "plan_spec": {
+        "tech_domain": "Artificial Intelligence",
+        "tech_subdomain": "Generative AI and NLP in Healthcare",
+        "application_domain": "Healthcare",
+        "application_subdomain": "healthcare_data_analysis",
+        "target_audience": "Data scientists, AI/ML engineers, and healthcare technology professionals",
+        "difficulty_level": "Advanced",
+        "time_constraints": "6-8 weeks",
+        "prerequisites": [
+            "Strong Python programming skills",
+            "Familiarity with machine learning and deep learning concepts",
+            "Basic knowledge of Generative AI/NLP",
+            "Experience with cloud platforms (Azure preferred)",
+            "Foundational understanding of healthcare domain standards"
+        ],
+        "scope": [
+            "Generative AI principles and use cases in healthcare",
+            "Natural language processing (NLP) for clinical data",
+            "Healthcare dataset standards and preprocessing",
+            "Building and deploying Python microservices (Flask)",
+            "Prototype development in Jupyter (ipynb)",
+            "MLOps for AI lifecycle management",
+            "Frontend data visualization (React basics)",
+            "Integration with Azure for scalable AI solutions",
+            "Best practices for secure and ethical healthcare data handling"
+        ],
+        "feature_set": [
+            "Data ingestion and preprocessing pipeline for healthcare data",
+            "NLP module for clinical text understanding",
+            "Generative AI models for synthetic healthcare data generation",
+            "RESTful API with Flask for AI service management",
+            "Interactive Python notebooks for R&D and prototyping",
+            "Automated training and deployment pipeline (MLOps)",
+            "Healthcare-standardized data storage and retrieval",
+            "Frontend dashboard for results visualization",
+            "Integration with Azure for production scalability"
+        ],
+        "problem_statement_style": "scenario",
+        "projects": [
+            {
+                "project_name": "healthcare_data_analysis_python_generative_ai",
+                "tech_domain": "Artificial Intelligence",
+                "tech_subdomain": "python_generative_ai",
+                "skill": "python_generative_ai",
+                "tech_stack": {
+                    "language": {
+                        "primary": "Python 3.11+"
+                    },
+                    "framework": {
+                        "primary": "PyTorch",
+                        "secondary": "transformers"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "pytest": "6.2+"
+                    },
+                    "integration_testing": {
+                        "tox": "latest"
+                    },
+                    "end_to_end_or_api_testing": {
+                        "pytest-flask": true
+                    }
+                },
+                "scope": {
+                    "AI Concepts": [
+                        "transformer architectures",
+                        "LLMs and generative adversarial networks",
+                        "prompt engineering"
+                    ],
+                    "Healthcare Data": [
+                        "FHIR standards",
+                        "de-identification"
+                    ],
+                    "Python Ecosystem": [
+                        "PyTorch",
+                        "transformers",
+                        "pandas"
+                    ]
+                },
+                "prerequisites": [
+                    "Python basics",
+                    "Understanding of neural networks",
+                    "Some experience with healthcare data"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Ubuntu 20.04+ or Windows 10+",
+                    "Database": "MySQL",
+                    "Host": "localhost",
+                    "Port": "3306",
+                    "Username": "testuser",
+                    "Password": "Testuser123$"
+                },
+                "learning_outcomes": [
+                    "Build and tune generative AI models for domain-specific applications",
+                    "Understand and implement NLP for clinical data",
+                    "Apply Python ML tools in a healthcare context"
+                ],
+                "feature_set": [
+                    "Model training and evaluation pipelines",
+                    "Synthetic data generation API"
+                ],
+                "api_documentation": {
+                    "OpenAPI": "Swagger, autogenerated from Flask routes"
+                },
+                "output_resource_type": "code",
+                "dependency_type": null
+            },
+            {
+                "project_name": "healthcare_data_analysis_python_jupyter_notebooks_ipynb",
+                "tech_domain": "Data Science",
+                "tech_subdomain": "python_jupyter_notebooks_ipynb",
+                "skill": "python_jupyter_notebooks_ipynb",
+                "tech_stack": {
+                    "language": {
+                        "primary": "Python 3.11+"
+                    },
+                    "framework": {
+                        "primary": "Jupyter Notebook"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "nbval": true
+                    },
+                    "integration_testing": null,
+                    "end_to_end_or_api_testing": null
+                },
+                "scope": {
+                    "Prototyping": [
+                        "rapid experimentation",
+                        "data visualization"
+                    ],
+                    "Exploratory Data Analysis": [
+                        "matplotlib",
+                        "seaborn"
+                    ]
+                },
+                "prerequisites": [
+                    "Basic Python",
+                    "Experience with pandas and numpy"
+                ],
+                "runtime_environment": {
+                    "IDE": "JupyterLab",
+                    "OS Requirements": "Ubuntu 20.04+ or Windows 10+",
+                    "Database": "MySQL",
+                    "Host": "localhost",
+                    "Port": "3306",
+                    "Username": "testuser",
+                    "Password": "Testuser123$"
+                },
+                "learning_outcomes": [
+                    "Conduct exploratory analysis in Jupyter",
+                    "Prototype models and visualize results"
+                ],
+                "feature_set": [
+                    "Reusable notebooks for NLP and generative AI demos"
+                ],
+                "api_documentation": null,
+                "output_resource_type": "code",
+                "dependency_type": null
+            },
+            {
+                "project_name": "healthcare_data_analysis_python_flask",
+                "tech_domain": "Web Development",
+                "tech_subdomain": "python_flask",
+                "skill": "python_flask",
+                "tech_stack": {
+                    "language": {
+                        "primary": "Python 3.11+"
+                    },
+                    "framework": {
+                        "primary": "Flask"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "pytest-flask": true
+                    },
+                    "integration_testing": {
+                        "coveralls": true
+                    },
+                    "end_to_end_or_api_testing": {
+                        "Postman": true
+                    }
+                },
+                "scope": {
+                    "APIs": [
+                        "RESTful endpoint design"
+                    ],
+                    "Security": [
+                        "authentication",
+                        "authorization"
+                    ],
+                    "Deployment": [
+                        "Dockerization"
+                    ]
+                },
+                "prerequisites": [
+                    "REST API concepts",
+                    "Python Flask basics"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Ubuntu 20.04+ or Windows 10+",
+                    "Database": "MySQL",
+                    "Host": "localhost",
+                    "Port": "3306",
+                    "Username": "testuser",
+                    "Password": "Testuser123$"
+                },
+                "learning_outcomes": [
+                    "Build and document scalable ML APIs"
+                ],
+                "feature_set": [
+                    "Endpoints for inference and synthetic data requests"
+                ],
+                "api_documentation": {
+                    "Specification": "OpenAPI 3.0"
+                },
+                "output_resource_type": "code",
+                "dependency_type": null
+            },
+            {
+                "project_name": "healthcare_data_analysis_python_mlops",
+                "tech_domain": "MLOps",
+                "tech_subdomain": "python_mlops",
+                "skill": "python_mlops",
+                "tech_stack": {
+                    "language": {
+                        "primary": "Python 3.11+"
+                    },
+                    "framework": {
+                        "primary": "MLflow"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "pytest": "latest"
+                    },
+                    "integration_testing": null,
+                    "end_to_end_or_api_testing": null
+                },
+                "scope": {
+                    "Automation": [
+                        "CI/CD for ML models",
+                        "model registry"
+                    ],
+                    "Monitoring": [
+                        "model versioning",
+                        "drift detection"
+                    ]
+                },
+                "prerequisites": [
+                    "Basic MLOps knowledge",
+                    "Familiarity with MLflow"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Ubuntu 20.04+ or Windows 10+",
+                    "Database": "MySQL",
+                    "Host": "localhost",
+                    "Port": "3306",
+                    "Username": "testuser",
+                    "Password": "Testuser123$"
+                },
+                "learning_outcomes": [
+                    "Automate ML training, testing, and deployment"
+                ],
+                "feature_set": [
+                    "Experiment tracking",
+                    "Model packaging and deployment"
+                ],
+                "api_documentation": null,
+                "output_resource_type": "code",
+                "dependency_type": "files"
+            },
+            {
+                "project_name": "healthcare_data_analysis_javascript_react",
+                "tech_domain": "Frontend Development",
+                "tech_subdomain": "javascript_react",
+                "skill": "javascript_react",
+                "tech_stack": {
+                    "language": {
+                        "primary": "JavaScript (ES2020+)"
+                    },
+                    "framework": {
+                        "primary": "React 18+"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "Jest": "latest"
+                    },
+                    "integration_testing": {
+                        "React Testing Library": "latest"
+                    },
+                    "end_to_end_or_api_testing": {
+                        "Cypress": "latest"
+                    }
+                },
+                "scope": {
+                    "UI": [
+                        "healthcare data dashboards"
+                    ],
+                    "API Integration": [
+                        "RESTful Flask endpoints"
+                    ]
+                },
+                "prerequisites": [
+                    "Basic React",
+                    "API integration concepts"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Windows 10+, macOS Monterey+, Ubuntu 20.04+"
+                },
+                "learning_outcomes": [
+                    "Integrate AI-powered APIs in a web dashboard"
+                ],
+                "feature_set": [
+                    "Dynamic dashboard displaying AI analysis results",
+                    "User controls for generating synthetic data"
+                ],
+                "api_documentation": null,
+                "output_resource_type": "code",
+                "dependency_type": "api_endpoints"
+            },
+            {
+                "project_name": "healthcare_data_analysis_azure_template",
+                "tech_domain": "Cloud/DevOps",
+                "tech_subdomain": "azure_template",
+                "skill": "azure_template",
+                "tech_stack": {
+                    "language": {
+                        "primary": "YAML"
+                    },
+                    "framework": {
+                        "primary": "Azure Resource Manager"
+                    }
+                },
+                "testing": {
+                    "unit_testing": null,
+                    "integration_testing": {
+                        "Azure Resource Validation": true
+                    },
+                    "end_to_end_or_api_testing": null
+                },
+                "scope": {
+                    "Deployment": [
+                        "infrastructure as code",
+                        "Azure resource provisioning"
+                    ]
+                },
+                "prerequisites": [
+                    "Basic Azure knowledge",
+                    "Infrastructure as code concepts"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Windows 10+, Ubuntu 20.04+"
+                },
+                "learning_outcomes": [
+                    "Automate cloud resource deployment for ML pipelines"
+                ],
+                "feature_set": [
+                    "Provision all backend/data/ML resources in Azure"
+                ],
+                "api_documentation": null,
+                "output_resource_type": "code",
+                "dependency_type": "files"
+            }
+        ],
+        "acceptance_criteria": [
+            "All code modules meet their respective unit/integration test coverage targets",
+            "Healthcare data is processed and stored according to provided standards",
+            "Generative NLP models produce valid and varied synthetic data per requirements",
+            "API endpoints must function per OpenAPI definitions",
+            "Frontend dashboard integrates correctly with backend APIs and displays results",
+            "Azure templates produce a fully deployable environment without manual intervention",
+            "Compliance with healthcare data security best practices"
+        ],
+        "deliverables": [
+            "Python codebase for generative AI and NLP services",
+            "Flask RESTful API server",
+            "Jupyter notebooks for experimentation and demonstrations",
+            "MLOps automation scripts/workflows",
+            "React frontend for visualization",
+            "Azure deployment templates",
+            "Comprehensive API and user documentation"
+        ],
+        "need_research": "False",
+        "learning_outcomes": [
+            "Develop production-grade, healthcare-focused generative AI applications",
+            "Deploy and monitor ML services in the cloud (Azure)",
+            "Design full-stack, testable, standards-compliant data pipelines"
+        ],
+        "learning_style": "guided",
+        "assessment_type": null,
+        "user_prompt": "help me create a Project Plan for this application"
+    }
+}

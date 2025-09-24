@@ -1,0 +1,37 @@
+[
+    {
+        "profile": "upgrad_setting",
+        "crew_llm": {
+            "config": "OPENAI_GPT_4_1",
+            "planning": "OPENAI_GPT_4_1",
+            "research": "OPENAI_GPT_4_1",
+            "solution": "OPENAI_GPT_4_1",
+            "stub_code": "OPENAI_GPT_4_1",
+            "test_case": "OPENAI_GPT_4_1",
+            "partial_code": "OPENAI_GPT_4_1",
+            "solution_review": "OPENAI_GPT_4_1",
+            "problem_statement": "OPENAI_GPT_4_1",
+            "research_with_tool": "OPENAI_GPT_4_1",
+            "modules_and_activities": "OPENAI_GPT_4_1"
+        },
+        "api_keys": {
+            "ANTHROPIC_API_KEY": "",
+            "PERPLEXITYAI_API_KEY": "",
+            "GEMINI_API_KEY": "",
+            "OPENAI_API_KEY": "**********YdigA"
+        }
+    },
+    {
+        "execution_id": "41e8ebee-c4e6-4aca-b286-a422c38203da",
+        "project_name": "demo_upgrad_reddit",
+        "created_by": "labuser",
+        "created_on": "2025-09-24T11:47:44.845557",
+        "modified_by": "labuser",
+        "modified_on": "2025-09-24T11:49:10.979052",
+        "owner": "Nuvepro",
+        "prompt": "help me create a Project Plan for this application"
+    },
+    {
+        "Application_duration": 0.03
+    }
+]
