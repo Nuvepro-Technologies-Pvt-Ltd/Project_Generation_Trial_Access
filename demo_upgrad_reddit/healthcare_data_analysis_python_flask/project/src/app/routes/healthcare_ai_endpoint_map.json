@@ -1,0 +1,167 @@
+{"endpoints": [
+  {
+    "name": "AI Clinical Text Inference",
+    "description": "Run AI model inference on clinical or unstructured medical text to extract medically-relevant entities or classifications.",
+    "method": "POST",
+    "endpoint": "/api/v1/inference/clinical-text",
+    "request_body": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Clinical note, discharge summary, or other medical text."
+        },
+        "patient_id": {
+          "type": "string",
+          "description": "Optional patient identifier (de-identified or hashed).",
+          "nullable": true
+        },
+        "model_version": {
+          "type": "string",
+          "description": "Specific AI model version to use.",
+          "nullable": true
+        }
+      },
+      "required": ["text"]
+    },
+    "response_body": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string"},
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string"},
+              "span": {"type": "string"},
+              "value": {"type": "string"}
+            },
+            "required": ["type", "span", "value"]
+          }
+        },
+        "labels": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "required": ["status", "entities", "labels"]
+    },
+    "auth_required": true,
+    "auth_level": "clinical_access",
+    "tags": ["Inference", "ClinicalText", "AI"]
+  },
+  {
+    "name": "Diagnosis Prediction Inference",
+    "description": "AI-powered clinical diagnosis prediction based on structured patient data.",
+    "method": "POST",
+    "endpoint": "/api/v1/inference/diagnosis-prediction",
+    "request_body": {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "object",
+          "description": "Dictionary of EHR variables, lab values, and structured inputs."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Optional additional context (hospital id, department, etc.).",
+          "nullable": true
+        }
+      },
+      "required": ["features"]
+    },
+    "response_body": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string"},
+        "predictions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {"type": "string", "description": "ICD10/11 or SNOMED CT code"},
+              "probability": {"type": "number", "format": "float"}
+            },
+            "required": ["code", "probability"]
+          }
+        }
+      },
+      "required": ["status", "predictions"]
+    },
+    "auth_required": true,
+    "auth_level": "clinical_access",
+    "tags": ["Inference", "Diagnosis", "AI"]
+  },
+  {
+    "name": "Synthetic Patient Data Request",
+    "description": "Generate synthetic (non-identifiable) clinical/patient data for research or development.",
+    "method": "POST",
+    "endpoint": "/api/v1/synthetic-data/patient-records",
+    "request_body": {
+      "type": "object",
+      "properties": {
+        "num_records": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "schema_type": {"type": "string", "enum": ["ehr", "lab", "demographics"]},
+        "constraints": {"type": "object", "description": "Optional constraints to guide synthesis (e.g., age ranges, diagnosis codes).", "nullable": true }
+      },
+      "required": ["num_records", "schema_type"]
+    },
+    "response_body": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string"},
+        "synthetic_records": {"type": "array", "items": {"type": "object"}},
+        "schema_type": {"type": "string"}
+      },
+      "required": ["status", "synthetic_records", "schema_type"]
+    },
+    "auth_required": true,
+    "auth_level": "research_access",
+    "tags": ["SyntheticData", "PatientRecords"]
+  },
+  {
+    "name": "Synthetic Cohort Summary Request",
+    "description": "Generate synthetic summary statistics for a patient cohort.",
+    "method": "POST",
+    "endpoint": "/api/v1/synthetic-data/cohort-summary",
+    "request_body": {
+      "type": "object",
+      "properties": {
+        "cohort_criteria": {"type": "object", "description": "Query definition for cohort selection (e.g., age > 50, diagnosis in [C34])"},
+        "metrics": {"type": "array", "items": {"type": "string"}, "description": "List of summary metrics, e.g., ['mean_age', 'diagnosis_counts']"},
+        "schema_type": {"type": "string", "enum": ["ehr", "lab"]}
+      },
+      "required": ["cohort_criteria", "metrics", "schema_type"]
+    },
+    "response_body": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string"},
+        "summary": {"type": "object"},
+        "metrics": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["status", "summary", "metrics"]
+    },
+    "auth_required": true,
+    "auth_level": "research_access",
+    "tags": ["SyntheticData", "CohortSummary"]
+  },
+  {
+    "name": "Get Supported Model List",
+    "description": "Retrieve all available models for AI inference, including descriptions and metadata.",
+    "method": "GET",
+    "endpoint": "/api/v1/models",
+    "request_body": null,
+    "response_body": {
+      "type": "object",
+      "properties": {
+        "status": {"type": "string"},
+        "models": {"type": "array", "items": {"type": "object", "properties": {"name": {"type": "string"}, "version": {"type": "string"}, "description": {"type": "string"}}}}
+      },
+      "required": ["status", "models"]
+    },
+    "auth_required": false,
+    "tags": ["ModelInfo"]
+  }
+]}

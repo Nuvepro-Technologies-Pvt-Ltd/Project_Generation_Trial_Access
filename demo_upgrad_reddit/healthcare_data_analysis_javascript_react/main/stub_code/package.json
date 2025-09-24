@@ -1,0 +1,12 @@
+// package.json
+{
+  "name": "ai-healthcare-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    // TODO: Add the dependencies required for your AI Healthcare Dashboard application
+  },
+  "scripts": {
+    // TODO: Add scripts for starting, building, testing, and ejecting the app
+  }
+}

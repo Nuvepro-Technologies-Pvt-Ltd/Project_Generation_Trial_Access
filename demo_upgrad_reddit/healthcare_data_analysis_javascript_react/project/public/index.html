@@ -1,0 +1,43 @@
+<!--
+Comprehensive manual and automated HTML validation test plan for static HTML entry point (index.html).
+
+NOTE: As this is a static HTML file (no JavaScript or server-side logic), there is no programmatic test code (Java, Python, JS, etc.) to generate or execute here. Industry best practice is to use automated HTML validation tools and accessibility checkers for such files. Below is a production-ready test plan and guidance for quality assurance of this entry point. This ensures maintainable, repeatable, and industry-compliant coverage.
+-->
+
+<!--
+Manual Testing Checklist / Test Plan:
+1. File Existence and Structure:
+   - Ensure 'public/index.html' file exists and is accessible.
+   - Validate the doctype is correct: <!DOCTYPE html>.
+   - The <html>, <head>, and <body> tags are present and properly closed.
+2. Metadata Validation:
+   - <meta charset="utf-8"> tag is present.
+   - <meta name="viewport" content="width=device-width, initial-scale=1"> is present for responsiveness.
+   - <meta name="description"> includes an appropriate description.
+   - <title> provides a meaningful and accurate page title.
+3. Favicon and External Resources:
+   - <link rel="icon"> points to a valid favicon location.
+   - Bootstrap icons CDN link is correct and resource loads successfully.
+4. Accessibility Checks:
+   - A <noscript> tag exists to inform users if JavaScript is disabled.
+   - <meta name="theme-color"> is present for browser UI aesthetics.
+   - <html lang="en"> attribute is correct for language specification.
+5. Content Mounting:
+   - <div id="root"></div> exists for JavaScript app mounting.
+6. Security Checks:
+   - No inline script tags or on* event handlers.
+   - No <iframe> or <object> tags that could pose an injection risk.
+
+Automated Linting/Validation (recommended for CI):
+1. Use HTML validators (e.g., https://validator.w3.org/) to ensure valid HTML5 markup.
+2. Run accessibility audits (axe, Lighthouse) to confirm A11y compliance.
+3. (Optional) Use linters like 'htmlhint' or CI tools to automatically verify structure and best practices.
+
+Example HTMLHint/Lighthouse config can be included in CI for continuous validation.
+
+Since no dynamic content, scripts, or API endpoints are present, this covers the complete test requirements for this entry point.
+
+For future automation:
+- If using Jest, Cypress, or Playwright, test that the root DOM node exists and that the meta tags render as expected when the build is served.
+- If a React or SPA entry point, confirm the div#root renders child content in integration tests (handled at the app/component testing level).
+-->

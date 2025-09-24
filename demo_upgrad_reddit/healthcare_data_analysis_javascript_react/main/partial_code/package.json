@@ -1,0 +1,26 @@
+// package.json
+{
+  "name": "ai-healthcare-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.6.0",
+    "bootstrap": "^5.3.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+  // Instructions:
+  // 1. Use the "dependencies" section to list every package your React healthcare dashboard app requires. Add any new packages needed for components, APIs, charting, etc.
+  // 2. In the "scripts" section, you can add custom commands for building, testing, or deploying your application.
+  // 3. Update the "name" and "version" fields if your project information changes.
+  // 4. Use this file to manage which libraries are installed with 'npm install' or 'yarn install'.
+  // 5. If you need to add development dependencies, use a "devDependencies" section following the structure of "dependencies".
+}
