@@ -33,5 +33,40 @@
     },
     {
         "Application_duration": 0.03
+    },
+    {
+        "project_name": "planning",
+        "crew_name": "planning_crew",
+        "usage_metrics": {
+            "total_tokens": 6963,
+            "prompt_tokens": 4214,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 2749,
+            "successful_requests": 1
+        }
+    },
+    {
+        "project_name": "planning",
+        "crew_name": "problem_statement_crew",
+        "usage_metrics": {
+            "total_tokens": 4025,
+            "prompt_tokens": 2263,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 1762,
+            "successful_requests": 1
+        }
+    },
+    {
+        "execution_id": "41e8ebee-c4e6-4aca-b286-a422c38203da",
+        "project_name": "demo_upgrad_reddit",
+        "created_by": "labuser",
+        "created_on": "2025-09-24T11:47:44.845557",
+        "modified_by": "labuser",
+        "modified_on": "2025-09-24T11:50:08.865319",
+        "owner": "Nuvepro",
+        "prompt": "help me create a Project Plan for this application"
+    },
+    {
+        "Application_duration": 2.42
     }
 ]
