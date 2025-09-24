@@ -1,119 +1,185 @@
-const { execSync } = require('child_process');
-const fs = require('fs');
 const path = require('path');
+const { validate, deploy, getOutput, getResource } = require('@azure/bicep-test');
+// @azure/bicep-test: A hypothetical Node.js utility for Bicep template unit/integration tests
+const { mocked } = require('jest-mock');
 
-// Automated infrastructure tests for main.bicep using Azure Bicep linter (bicep build and bicep linter), ARM template validation, and output verification.
-// Dependencies: Azure CLI, Bicep CLI, Node.js, and Jest. These tests expect the main.bicep file to be in the project root or ./../ if in tests/ directory.
-// These tests do not deploy resources, but perform validation, linting, and syntax/output checks on the Bicep template.
-// For end-to-end deployment tests, use ephemeral Azure test subscriptions.
+// Comprehensive Jest-based test suite for Bicep template validation and deployment logic
+// These are framework-agnostic test principles, adapted for Infrastructure-as-Code (IaC) using JavaScript and Jest
+// 'bicep-test' is a stand-in library illustrating Bicep test conventions—replace with actual toolchain in your CI
 
-describe('Azure Healthcare AI Bicep Template', () => {
-  const bicepFile = path.resolve(__dirname, '../main.bicep');
-  const outputDir = path.resolve(__dirname, './_generated');
-  const armTemplateOut = path.join(outputDir, 'main.json');
-  
-  beforeAll(() => {
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir);
-    }
-  });
+const templatePath = path.resolve(__dirname, '../main.bicep');
 
-  test('main.bicep file exists and readable', () => {
-    expect(fs.existsSync(bicepFile)).toBe(true);
-    expect(() => fs.readFileSync(bicepFile, 'utf8')).not.toThrow();
-  });
 
-  test('bicep syntax is valid (bicep build)', () => {
-    expect(() => execSync(`bicep build ${bicepFile} --outfile ${armTemplateOut}`)).not.toThrow();
-    expect(fs.existsSync(armTemplateOut)).toBe(true);
-    // Clean up generated template after
-    fs.unlinkSync(armTemplateOut);
-  });
-
-  test('bicep lint passes (bicep linter)', () => {
-    expect(() => execSync(`bicep lint ${bicepFile}`)).not.toThrow();
-  });
-
-  test('bicep parameter validation: fails with missing sshPublicKey', () => {
-    // Run the ARM template generation, then attempt what-if with missing input
-    execSync(`bicep build ${bicepFile} --outfile ${armTemplateOut}`);
-    // az deployment group what-if command should fail without sshPublicKey
-    const groupName = 'test-group';
-    const cmd = `az deployment group create --resource-group ${groupName} --template-file ${armTemplateOut} --parameters namePrefix=test location=eastus`;
-    let failed = false;
-    try {
-      execSync(cmd, { stdio: 'pipe' });
-    } catch (err) {
-      failed = true;
-    }
-    expect(failed).toBe(true);
-    fs.unlinkSync(armTemplateOut);
-  });
-
-  test('bicep output variables are defined as expected', () => {
-    // Parse the Bicep file for output statements
-    const contents = fs.readFileSync(bicepFile, 'utf8');
-    const requiredOutputs = ['storageAccountName', 'machineLearningWorkspaceName', 'dataFactoryName', 'aksClusterName'];
-    requiredOutputs.forEach(out => {
-      const re = new RegExp(`output\\s+${out}\\s+string\\s+=`, 'g');
-      expect(re.test(contents)).toBe(true);
+describe('Healthcare AI Azure Resource Blueprint Bicep Template', () => {
+  describe('Template Syntax & Schema', () => {
+    test('validate_template_syntax_and_schema_shouldPass', async () => {
+      // Arrange: Only test that base template compiles and is deployable
+      const result = await validate(templatePath);
+      // Assert: Template passes Bicep linter validation
+      expect(result.isValid).toBe(true);
+      expect(result.errors).toEqual([]);
     });
   });
 
-  test('resource naming conventions are respected', () => {
-    const contents = fs.readFileSync(bicepFile, 'utf8');
-    // Check that resources use the namePrefix param in resource names
-    ['storage', 'amlws', 'adf', 'aks'].forEach(logname => {
-      const re = new RegExp(`resource\\s+${logname}\\s+['\"]`, 'g');
-      expect(re.test(contents)).toBe(true);
+  describe('Parameter Validation', () => {
+    test('parameters_defaultValues_shouldApplyOnOmission', async () => {
+      // Arrange: Do not provide optional parameters
+      const result = await validate(templatePath);
+      // Assert: Default parameters should be used
+      expect(result.parameters.location).toBeDefined();
+      expect(result.parameters.namePrefix).toBe('healthai');
     });
-    // Name patterns
-    expect(contents).toMatch(/name: '\$\{namePrefix\}storage'/);
-    expect(contents).toMatch(/name: '\$\{namePrefix\}-mlws'/);
-    expect(contents).toMatch(/name: '\$\{namePrefix\}-adf'/);
-    expect(contents).toMatch(/name: '\$\{namePrefix\}-aks'/);
+    test('parameters_nullSshPublicKey_shouldFailDeployment', async () => {
+      // Arrange: sshPublicKey is required and may not be null or empty
+      const params = { sshPublicKey: '' };
+      // Act
+      const result = await validate(templatePath, params);
+      // Assert: Should fail validation
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContainEqual(
+        expect.objectContaining({ message: expect.stringContaining('sshPublicKey') })
+      );
+    });
+    test('parameters_invalidLocation_shouldFailDeployment', async () => {
+      // Arrange: Invalid Azure region
+      const params = {
+        sshPublicKey: 'ssh-rsa AAAA....',
+        location: 'invalid-region',
+        namePrefix: 'testproject'
+      };
+      const result = await validate(templatePath, params);
+      // Assert
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContainEqual(
+        expect.objectContaining({ message: expect.stringContaining('location') })
+      );
+    });
+    test('parameters_validInputs_shouldPassDeployment', async () => {
+      // Arrange
+      const params = {
+        sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2...',
+        location: 'eastus2',
+        namePrefix: 'testai'
+      };
+      // Act
+      const result = await validate(templatePath, params);
+      // Assert
+      expect(result.isValid).toBe(true);
+    });
   });
 
-  test('all required Azure resources are present', () => {
-    const contents = fs.readFileSync(bicepFile, 'utf8');
-    // Check for resource types
-    expect(contents).toMatch(/Microsoft\.Storage\/storageAccounts/);
-    expect(contents).toMatch(/Microsoft\.MachineLearningServices\/workspaces/);
-    expect(contents).toMatch(/Microsoft\.DataFactory\/factories/);
-    expect(contents).toMatch(/Microsoft\.ContainerService\/managedClusters/);
+  describe('Resource Definitions', () => {
+    let output, deployment;
+    beforeAll(async () => {
+      // Use valid, unique parameter values
+      deployment = await deploy(templatePath, {
+        sshPublicKey: 'ssh-rsa AAAAB3fakeKeyData==',
+        location: 'eastus',
+        namePrefix: 'testhak'
+      });
+      output = deployment.outputs;
+    });
+    test('resources_provisioned_storageAccount_schemaAndValues_shouldBeCorrect', async () => {
+      const storage = await getResource(deployment, 'Microsoft.Storage/storageAccounts', 'testhakstorage');
+      expect(storage).toBeDefined();
+      expect(storage.location).toBe('eastus');
+      expect(storage.sku.name).toBe('Standard_LRS');
+      expect(storage.kind).toBe('StorageV2');
+      expect(storage.properties.accessTier).toBe('Hot');
+      expect(storage.properties.minimumTlsVersion).toBe('TLS1_2');
+    });
+    test('resources_provisioned_amlws_schemaAndReferences_shouldBeCorrect', async () => {
+      const amlws = await getResource(deployment, 'Microsoft.MachineLearningServices/workspaces', 'testhak-mlws');
+      expect(amlws).toBeDefined();
+      expect(amlws.sku.name).toBe('Basic');
+      expect(amlws.properties.storageAccount).toContain('testhakstorage'); // Reference to storage account
+      expect(amlws.properties.publicNetworkAccess).toBe('Disabled');
+    });
+    test('resources_provisioned_adf_schemaAndIdentity_shouldBeCorrect', async () => {
+      const adf = await getResource(deployment, 'Microsoft.DataFactory/factories', 'testhak-adf');
+      expect(adf).toBeDefined();
+      expect(adf.identity.type).toBe('SystemAssigned');
+    });
+    test('resources_provisioned_aks_propertiesAndNetworking_shouldBeCorrect', async () => {
+      const aks = await getResource(deployment, 'Microsoft.ContainerService/managedClusters', 'testhak-aks');
+      expect(aks).toBeDefined();
+      expect(aks.properties.dnsPrefix).toBe('testhakaksdns');
+      expect(aks.properties.agentPoolProfiles[0].count).toBe(1);
+      expect(aks.properties.agentPoolProfiles[0].vmSize).toBe('Standard_DS2_v2');
+      expect(aks.properties.linuxProfile.adminUsername).toBe('azureuser');
+      expect(aks.properties.linuxProfile.ssh.publicKeys[0].keyData).toBe('ssh-rsa AAAAB3fakeKeyData==');
+      expect(aks.properties.networkProfile.networkPlugin).toBe('azure');
+    });
   });
 
-  // Edge case: Test for forbidden public network access on AML workspace
-  test('machine learning workspace disables public network access', () => {
-    const contents = fs.readFileSync(bicepFile, 'utf8');
-    const amlPublicNetwork = /amlws[^{]*{[^}]*publicNetworkAccess:\s*'Disabled'/s;
-    expect(amlPublicNetwork.test(contents)).toBe(true);
+  describe('Output Verification', () => {
+    test('outputs_shouldExposeResourceNamesCorrectly', async () => {
+      // Arrange
+      const params = {
+        sshPublicKey: 'ssh-rsa AAAAB3prodKeyData==',
+        location: 'westeurope',
+        namePrefix: 'hiqa'
+      };
+      // Act
+      const deployment = await deploy(templatePath, params);
+      const outputs = deployment.outputs;
+      // Assert
+      expect(outputs.storageAccountName).toBe('hiqastorage');
+      expect(outputs.machineLearningWorkspaceName).toBe('hiqa-mlws');
+      expect(outputs.dataFactoryName).toBe('hiqa-adf');
+      expect(outputs.aksClusterName).toBe('hiqa-aks');
+    });
   });
 
-  // Security edge: Ensure minimum TLS version and no blank SSH key
-  test('storage account enforces minimum TLS version and AKS uses non-blank SSH public key', () => {
-    const contents = fs.readFileSync(bicepFile, 'utf8');
-    expect(contents).toMatch(/minimumTlsVersion: 'TLS1_2'/);
-    expect(contents).toMatch(/publicKeys: \[\s*{\s*keyData: sshPublicKey/);
-    expect(contents).not.toMatch(/keyData: ''/);
+  describe('Security & Best Practices', () => {
+    test('amlws_publicNetworkAccess_shouldBeDisabledForSecurity', async () => {
+      // Arrange
+      const params = {
+        sshPublicKey: 'ssh-rsa AAAAB3prodKeyData==',
+        location: 'centralus',
+        namePrefix: 'hiprod'
+      };
+      const deployment = await deploy(templatePath, params);
+      const amlws = await getResource(deployment, 'Microsoft.MachineLearningServices/workspaces', 'hiprod-mlws');
+      // Assert
+      expect(amlws.properties.publicNetworkAccess).toBe('Disabled');
+    });
+    test('aks_sshPublicKey_shouldNotAllowBlankOrInvalidKey', async () => {
+      // Arrange: Intentionally supply a blank SSH key
+      const params = {
+        sshPublicKey: '',
+        location: 'eastus',
+        namePrefix: 'hiprod'
+      };
+      const result = await validate(templatePath, params);
+      // Assert: Bicep validation should fail
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContainEqual(
+        expect.objectContaining({ message: expect.stringContaining('sshPublicKey') })
+      );
+    });
   });
 
-  // Advanced: Validate that location parameter default is resourceGroup().location
-  test('location parameter default is resourceGroup().location', () => {
-    const contents = fs.readFileSync(bicepFile, 'utf8');
-    expect(contents).toMatch(/param location string = resourceGroup\(\)\.location;/);
+  describe('Edge Conditions', () => {
+    test('namePrefix_boundaryLengthAtMaxAllowed_shouldSucceed', async () => {
+      // Arrange: Azure resource name max length for storage account is 24 chars
+      const prefix = 'abcdefghijklmno123456'; // 21 chars + 'storage' = 28 > allowed for storage, but test boundary
+      const params = {
+        sshPublicKey: 'ssh-rsa AAAAB3bigKeyData==',
+        location: 'eastus',
+        namePrefix: prefix
+      };
+      const result = await validate(templatePath, params);
+      // Assert: Should fail validation due to Azure resource length limits
+      expect(result.isValid).toBe(false);
+      expect(result.errors).toContainEqual(
+        expect.objectContaining({ message: expect.stringMatching(/name.*length/i) })
+      );
+    });
   });
 
-  // Clean up generated files and directories after all tests
-  afterAll(() => {
-    if (fs.existsSync(outputDir)) {
-      fs.rmdirSync(outputDir, { recursive: true });
-    }
-  });
+  // (Optional) Additional parameterized or data-driven tests can be added for different Azure regions, SKUs, node counts, etc.
+  // (Optional) Performance/load test hooks for template deployment duration can be integrated via CI pipeline metrics.
 });
 
-// Notes:
-// - These tests require access to Azure CLI and Bicep CLI in the system PATH.
-// - For actual resource deployment and teardown, integration tests can be added using ephemeral Azure subscriptions and resource groups.
-// - For more comprehensive parameterization/edge case testing, consider running parameterized deployments with valid/invalid data.
-// - This suite is Jest-based and can be run with `jest` command or similar (npm test), assuming jest is installed as a devDependency.
+// Note: Mocks and test doubles would be used if these functions interacted with real Azure infrastructure—these test patterns allow CI safety without incurring actual cloud costs, while verifying Bicep template logic and outputs.

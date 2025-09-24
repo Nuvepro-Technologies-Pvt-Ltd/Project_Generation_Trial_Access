@@ -638,5 +638,73 @@
     },
     {
         "Application_duration": 127.08
+    },
+    {
+        "project_name": "healthcare_data_analysis_azure_template",
+        "crew_name": "modules_and_activities_crew",
+        "usage_metrics": {
+            "total_tokens": 6287,
+            "prompt_tokens": 5580,
+            "cached_prompt_tokens": 5504,
+            "completion_tokens": 707,
+            "successful_requests": 1
+        }
+    },
+    {
+        "project_name": "healthcare_data_analysis_azure_template",
+        "crew_name": "solution_crew",
+        "usage_metrics": {
+            "total_tokens": 21293,
+            "prompt_tokens": 16782,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 4511,
+            "successful_requests": 7
+        }
+    },
+    {
+        "project_name": "healthcare_data_analysis_azure_template",
+        "crew_name": "code_stubs_crew",
+        "usage_metrics": {
+            "total_tokens": 12706,
+            "prompt_tokens": 10440,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 2266,
+            "successful_requests": 6
+        }
+    },
+    {
+        "project_name": "healthcare_data_analysis_azure_template",
+        "crew_name": "partial_code_crew",
+        "usage_metrics": {
+            "total_tokens": 16270,
+            "prompt_tokens": 10722,
+            "cached_prompt_tokens": 7936,
+            "completion_tokens": 5548,
+            "successful_requests": 6
+        }
+    },
+    {
+        "project_name": "healthcare_data_analysis_azure_template",
+        "crew_name": "testcases_crew",
+        "usage_metrics": {
+            "total_tokens": 89200,
+            "prompt_tokens": 66169,
+            "cached_prompt_tokens": 38784,
+            "completion_tokens": 23031,
+            "successful_requests": 16
+        }
+    },
+    {
+        "execution_id": "41e8ebee-c4e6-4aca-b286-a422c38203da",
+        "project_name": "demo_upgrad_reddit",
+        "created_by": "labuser",
+        "created_on": "2025-09-24T11:47:44.845557",
+        "modified_by": "labuser",
+        "modified_on": "2025-09-24T11:50:08.865319",
+        "owner": "Nuvepro",
+        "prompt": "help me create a Project Plan for this application"
+    },
+    {
+        "Application_duration": 129.75
     }
 ]
