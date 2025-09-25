@@ -1,0 +1,59 @@
+[
+    {
+        "profile": "upgrad_setting",
+        "crew_llm": {
+            "config": "OPENAI_GPT_4_1",
+            "planning": "OPENAI_GPT_4_1",
+            "research": "OPENAI_GPT_4_1",
+            "solution": "OPENAI_GPT_4_1",
+            "stub_code": "OPENAI_GPT_4_1",
+            "test_case": "OPENAI_GPT_4_1",
+            "partial_code": "OPENAI_GPT_4_1",
+            "solution_review": "OPENAI_GPT_4_1",
+            "problem_statement": "OPENAI_GPT_4_1",
+            "research_with_tool": "OPENAI_GPT_4_1",
+            "modules_and_activities": "OPENAI_GPT_4_1"
+        },
+        "api_keys": {
+            "ANTHROPIC_API_KEY": "",
+            "PERPLEXITYAI_API_KEY": "",
+            "GEMINI_API_KEY": "",
+            "OPENAI_API_KEY": "**********YdigA"
+        }
+    },
+    {
+        "project_name": "planning",
+        "crew_name": "planning_crew",
+        "usage_metrics": {
+            "total_tokens": 5461,
+            "prompt_tokens": 4260,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 1201,
+            "successful_requests": 1
+        }
+    },
+    {
+        "project_name": "planning",
+        "crew_name": "problem_statement_crew",
+        "usage_metrics": {
+            "total_tokens": 3318,
+            "prompt_tokens": 1990,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 1328,
+            "successful_requests": 1
+        }
+    },
+    {
+        "execution_id": "71dee850-941c-41e9-ba85-0579060553ac",
+        "project_name": "Recipe Finder",
+        "created_by": "labuser",
+        "created_on": "2025-09-25T07:14:31.461700",
+        "modified_by": "labuser",
+        "modified_on": "2025-09-25T07:16:19.901485",
+        "owner": "Nuvepro",
+        "prompt": "Users enter an ingredient (e.g., \"tomato\") and get a list of recipes.\n\nEach recipe should show a title, ingredients, and steps.\n\nKeep the design simple with a clean search bar.\n\nUse JavaScript with a free API (like Edamam or Spoonacular)."
+    },
+    {
+        "Application_duration": 1.83
+    }
+]

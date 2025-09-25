@@ -1,0 +1,146 @@
+{
+    "id": "71dee850-941c-41e9-ba85-0579060553ac",
+    "name": "Recipe Finder",
+    "description": "Detailed specification for generating a Project using Generative AI",
+    "schema": "2.0",
+    "owner": "Nuvepro",
+    "created_by": "labuser",
+    "created_on": "2025-09-25T07:14:31.461700",
+    "modified_by": "labuser",
+    "modified_on": "2025-09-25T07:16:19.901485",
+    "published_on": "",
+    "category": "",
+    "version": "Recipe Finder",
+    "locale": "en_US",
+    "plan_spec": {
+        "tech_domain": "Frontend Development",
+        "tech_subdomain": "React",
+        "application_domain": "Recipe Search",
+        "application_subdomain": "ingredient_recipe_search",
+        "target_audience": "Beginner to Intermediate JavaScript and frontend developers interested in API integration and UI building",
+        "difficulty_level": "Beginner",
+        "time_constraints": "2-3 days",
+        "prerequisites": [
+            "Basic knowledge of JavaScript",
+            "Familiarity with React fundamentals (components, state, props)",
+            "Understanding of RESTful APIs and HTTP requests",
+            "Basic HTML/CSS skills"
+        ],
+        "scope": [
+            "React components and state management",
+            "JavaScript fetch/async API calls",
+            "REST APIs (Spoonacular or Edamam)",
+            "Frontend error handling",
+            "User interface (UI) design best practices",
+            "Displaying structured data (titles, ingredients, steps)",
+            "Clean search bar/UX design"
+        ],
+        "feature_set": [
+            "Ingredient input search bar",
+            "Fetching recipes via API based on user input",
+            "Display each recipe with title, list of ingredients, and preparation steps",
+            "Minimal clean UI with error/loading states",
+            "Clear separation of concerns in components"
+        ],
+        "problem_statement_style": "scenario",
+        "projects": [
+            {
+                "project_name": "ingredient_recipe_search_react",
+                "tech_domain": "Frontend Development",
+                "tech_subdomain": "React",
+                "skill": "javascript_react",
+                "tech_stack": {
+                    "language": {
+                        "name": "JavaScript",
+                        "version": "ES6+"
+                    },
+                    "framework": {
+                        "name": "React",
+                        "version": "18.x"
+                    }
+                },
+                "testing": {
+                    "unit_testing": {
+                        "library": "Jest",
+                        "react_testing_library": true
+                    },
+                    "integration_testing": {
+                        "library": "Jest",
+                        "api_mocking": "msw (Mock Service Worker)"
+                    },
+                    "end_to_end_or_api_testing": {
+                        "tool": "Cypress",
+                        "coverage": "Search & display integration"
+                    }
+                },
+                "scope": {
+                    "core_concepts": [
+                        "React component structure (functional components, hooks)",
+                        "Form handling and controlled inputs in React",
+                        "API integration using fetch or axios",
+                        "Component-based UI layout",
+                        "Error and loading UI states"
+                    ],
+                    "project_specific": [
+                        "Clean and accessible search bar design",
+                        "Displaying recipe data: parsing and layout",
+                        "Simple and attractive user interface"
+                    ]
+                },
+                "prerequisites": [
+                    "Install Node.js and npm",
+                    "Basic JavaScript and React knowledge"
+                ],
+                "runtime_environment": {
+                    "IDE": "Visual Studio Code",
+                    "OS Requirements": "Windows 10+, macOS Monterey+, Ubuntu 20.04+",
+                    "NodeJS": "v18.x or later",
+                    "npm": "v8.x or later"
+                },
+                "learning_outcomes": [
+                    "Understand the process of integrating a third-party recipe API in a React app",
+                    "Build simple, clean, and accessible UI components",
+                    "Effectively manage local component state and asynchronous data fetching",
+                    "Implement robust error and loading states in UI",
+                    "Test component and application logic with modern frontend tools"
+                ],
+                "feature_set": [
+                    "Single-page UI with clean search bar for ingredient entry",
+                    "On search, fetch list of recipes from API matching ingredient",
+                    "Display recipes, each with a title, ingredients, and preparation steps",
+                    "Handle loading spinner and error messages",
+                    "Responsive and readable UI with minimal styling"
+                ],
+                "api_documentation": null,
+                "output_resource_type": "code",
+                "dependency_type": null
+            }
+        ],
+        "acceptance_criteria": [
+            "Search bar allows input of a single ingredient (e.g., 'tomato')",
+            "On submitting ingredient, the app queries live recipe API and displays results matching the ingredient",
+            "Each recipe result displays its title, a clean bullet list of ingredients, and structured step-by-step instructions if available",
+            "If API returns an error or no results, user sees a relevant informative message",
+            "UI is uncluttered with clear division between search and results, usable on both desktop and mobile",
+            "App gracefully handles loading state (spinner or message)",
+            "All API keys/secrets are kept out of source code via environment variables"
+        ],
+        "deliverables": [
+            "React frontend codebase (App.js, component files, CSS)",
+            "Environment variable documentation for API key setup",
+            "Test cases using Jest and React Testing Library",
+            "Sample screenshots or screen recording (optional)",
+            "README with setup and usage instructions"
+        ],
+        "need_research": "False",
+        "learning_outcomes": [
+            "Ability to build a React-based app that interacts with a third-party API",
+            "Enhance UI/UX and state handling skills",
+            "Designing and testing simple data-driven UI applications"
+        ],
+        "learning_style": "assessment",
+        "assessment_type": "partial_code",
+        "user_prompt": "Users enter an ingredient (e.g., \"tomato\") and get a list of recipes.\n\nEach recipe should show a title, ingredients, and steps.\n\nKeep the design simple with a clean search bar.\n\nUse JavaScript with a free API (like Edamam or Spoonacular).",
+        "problem_statement": "Scenario-Based Problem Statement for a React-Powered Ingredient Recipe Search Application\n\nScenario:  \nYou have just joined Nourishio, a startup specializing in digital solutions for home cooks and food enthusiasts. The current industry trend is toward highly interactive web applications that make everyday tasks—like finding recipes based on available pantry ingredients—more accessible and visually appealing. Your product manager has identified a critical need: many users struggle to figure out what to cook with leftovers or when supplies are limited. Your task is to build the core frontend for an Ingredient-based Recipe Search application.\n\nYour Role:  \nAs a Frontend Developer specializing in React, you are responsible for delivering a robust, clean, and user-friendly search interface. Your project must allow users to enter a list of ingredients and receive relevant recipes from a third-party recipe API. The focus is on creating a seamless user experience, managing asynchronous data fetching, and designing maintainable, well-structured React components.\n\nProject Objective:  \nDevelop a minimal, visually clean React web application that enables users to input ingredients, fetches matching recipes from a recipe API, and displays each result with the recipe title, a list of required ingredients, and clear preparation steps. The app must handle loading and error states gracefully and maintain a clear separation of UI concerns using modular React components.\n\nKey Features & Requirements (strictly adhere to these):\n- Ingredient input search bar: Users can enter one or more ingredients to search for recipes.\n- Fetching recipes via API based on user input: When the search is initiated, your app must fetch recipes from a public API that supports ingredient-based searching (e.g., Edamam, Spoonacular, or mock/fake API).\n- Display each recipe with title, list of ingredients, and preparation steps: Results must present this data clearly.\n- Minimal clean UI with error/loading states: Show loading indicators during async fetches and user-friendly error messages for failed requests or empty results. The visual style should remain uncluttered and modern.\n- Clear separation of concerns in components: Use a modular component structure (e.g., SearchBar, RecipeList, RecipeCard, Loading, ErrorMessage) for maximum maintainability.\n\nTarget Learner Profile:\n- Skill Level: Beginner to Intermediate JavaScript and frontend developers who have completed basic React tutorials and have some experience with JavaScript ES6+ features, but are new to API integration and professional UI building.\n- Assumptions: Learners understand React fundamentals (components, props, state) but have little or no experience with API calls, error handling, UI state management, or component architecture.\n- The project is designed as a 2–3 day sprint, suitable for individuals or groups.\n\nLearning Outcomes:\nBy successfully delivering this project, you will:\n- Demonstrate the ability to build a React-based web app that interacts with a third-party API, handling asynchronous operations and updating the UI based on server responses.\n- Enhance practical UI/UX skills by designing user interactions, managing input states, and providing clear feedback for loading and error conditions.\n- Gain experience in designing, implementing, and testing simple, reusable, and data-driven UI components for a real-world use case.\n\nProject Tasks & Steps:\nOver a 2–3 day period, you are expected to:\n\nDay 1:\n1. Scaffold a basic React app using Create React App or Vite. Remove unnecessary boilerplate to keep the codebase clean and focused.\n2. Implement the Ingredient Input Search Bar as a controlled React component. Users should be able to type comma-separated ingredients and submit the search via a button or \"Enter\" key.\n3. Establish main component structure: at minimum, create SearchBar, RecipeList, RecipeCard, LoadingIndicator, and ErrorMessage components.\n\nDay 2:\n4. Integrate an API fetch function in the main App component or a dedicated service. Use Fetch or Axios to request recipes based on the user’s input ingredients. Make sure to handle the API key securely if using a real service, or substitute with a public demo endpoint or hardcoded demo data if needed.\n5. Populate RecipeList with a dynamic list of RecipeCard components upon successful fetch. Each RecipeCard must display:\n   - The recipe’s title,\n   - The full ingredient list,\n   - Step-by-step preparation/method instructions (use placeholders if not provided by the API).\n6. Add and display UI states:\n   - Loading: Show LoadingIndicator while request is pending.\n   - Error: Show ErrorMessage if the request fails, if the API returns zero results, or if the input is invalid.\n   - Success: Show the fetched list of recipes.\n7. Style the application using simple CSS or a preferred UI library—prioritize readability, proper alignment, and an overall clean appearance.\n\nDay 3:\n8. Refine component separation and code structure for maintainability—pass data via props, avoid unnecessary logic in UI components, and use functional components/hooks where possible.\n9. Conduct basic manual tests:\n   - Enter valid and invalid ingredient combinations.\n   - Induce API errors (e.g., disconnect from network).\n   - Verify that the loading and error states respond correctly.\n10. Optional stretch: Refactor for reusability or add UI polish (e.g., responsive layout, small hover effects).\n   \nDeliverables:\n- A GitHub repository containing the complete React project.\n- A \"README.md\" file with a short description, clear setup instructions, and a summary of features implemented.\n- Clear documentation within code, especially separating concerns in components and handling props/state.\n\nSuccess Criteria:\n- The app should run locally without errors.\n- Users can submit an ingredient list and reliably fetch and view recipes matching the search.\n- The user is never left guessing: loading and error states are always clearly presented.\n- The codebase demonstrates componentized architecture with clear separation of UI, logic, and data fetching concerns.\n\nKey Technologies and Constraints:\n- Use only React (and its ecosystem: hooks, basic state management, CSS-in-JS or plain CSS as desired)\n- No backend, routing, or database work—focus strictly on frontend features defined above\n- No extraneous features or libraries outside the specified scope\n\nIndustry Relevance:  \nSolving this challenge mirrors real-world frontend tasks in food-tech and lifestyle applications, where search-driven interfaces and third-party integrations are essential to user satisfaction. Executing this project will solidify your ability to contribute effectively to modern frontend teams.\n\nStay focused on the defined features, put user experience first, and demonstrate your practical knowledge of React and asynchronous data integration!"
+    }
+}
