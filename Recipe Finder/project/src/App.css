@@ -1,0 +1,145 @@
+import fs from 'fs';
+import path from 'path';
+import { describe, it, expect } from '@jest/globals';
+import postcss from 'postcss';
+import cssnano from 'cssnano';
+
+/*
+  Test suite for App.css - Minimal Responsive Polish
+  Framework: Jest (JavaScript), with PostCSS for CSS validation
+  These tests are written to be run as Jest test files (className.test.js) in a Node.js project.
+  - Validates presence and correctness of all declared CSS classes, selectors, and rules, including responsiveness and accessibility tweaks.
+  - Ensures major properties (color, font-size, border-radius, media queries) are present.
+  - Lints and parses the CSS to check for syntax errors.
+  - Regression and boundary test for media queries.
+  - Can be run as is, after installing dependencies: jest, postcss, cssnano.
+*/
+
+describe('App.css StyleSheet', () => {
+  const cssFilePath = path.join(__dirname, '../src/App.css');
+  let cssContent = '';
+
+  beforeAll(() => {
+    // Read in the CSS file for testing
+    cssContent = fs.readFileSync(cssFilePath, 'utf-8');
+  });
+
+  it('should parse without syntax errors', async () => {
+    // Runs cssnano to perform parse/lint validation
+    let error = null;
+    try {
+      await postcss([cssnano]).process(cssContent, { from: undefined });
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toBeNull();
+  });
+
+  it('should declare all required class selectors', () => {
+    const selectors = [
+      '.container', '.card', '.card-title', '.card-body',
+      '.btn-primary', '.btn-outline-primary', 'input', '.form-control',
+      '.spinner-border', '.alert', '.card-img-top', ':focus-visible'
+    ];
+    for (const selector of selectors) {
+      expect(cssContent.includes(selector)).toBe(true);
+    }
+  });
+
+  it('should style h1 and h2 with font-family, font-weight, color, letter-spacing, and line-height', () => {
+    const headingBlock = /h1, h2 *\{([\s\S]*?)\}/.exec(cssContent);
+    expect(headingBlock).not.toBeNull();
+    const block = headingBlock[1];
+    const props = ['font-family', 'font-weight', 'color', 'letter-spacing', 'line-height'];
+    for (const prop of props) {
+      expect(block.includes(prop)).toBe(true);
+    }
+  });
+
+  it('should not use border on .card (except for none)', () => {
+    const cardBlock = /.card *\{([\s\S]*?)\}/.exec(cssContent);
+    expect(cardBlock).not.toBeNull();
+    const block = cardBlock[1];
+    expect(block.includes('border: none')).toBe(true);
+  });
+
+  it('should provide media query for max-width: 767px and override styles', () => {
+    expect(cssContent).toMatch(/@media *(max-width: *767px)/);
+    const mediaBlock = /@media *\(max-width: 767px\) *\{([\s\S]*?)\}/.exec(cssContent);
+    expect(mediaBlock).not.toBeNull();
+    const block = mediaBlock[1];
+    // Responsive overrides present?
+    expect(block).toContain('.container');
+    expect(block).toContain('.card-img-top');
+    expect(block).toContain('h1, h2');
+  });
+
+  it('should set a11y visible focus outline', () => {
+    const focusBlock = /:focus-visible *\{([\s\S]*?)\}/.exec(cssContent);
+    expect(focusBlock).not.toBeNull();
+    const block = focusBlock[1];
+    expect(block).toContain('outline: 2px solid #4782e3');
+  });
+
+  it('should use intended color palette', () => {
+    // Checks every required #hex and rgb color against requirements
+    const palette = ['#f9fafc', '#244158', '#246ee6', '#4782e3', '#5b93eb', 'rgba(40,55,60,0.05)', 'rgba(64,70,90,0.06)'];
+    for (const color of palette) {
+      expect(cssContent.includes(color)).toBe(true);
+    }
+  });
+
+  it('should use only !important where specified', () => {
+    // We only expect it on .card (border-radius) and .card-body (padding)
+    const importantUsages = cssContent.match(/!important/g) || [];
+    expect(importantUsages.length).toBe(2);
+  });
+
+  it('should not contain excessive box-shadow or border for no visual clutter', () => {
+    // There are box-shadows, but border usage is minimal
+    const borders = cssContent.match(/border(?!: none)/g) || [];
+    // There should be border usage only for the focus-visible and outline-primary
+    expect(borders.length).toBeLessThanOrEqual(4);
+  });
+
+  it('should provide readable font sizes for titles and inputs', () => {
+    expect(cssContent).toMatch(/font-size: *1\.1rem|font-size: *1\.09rem/);
+  });
+
+  it('should ensure spinner is sized and colored correctly', () => {
+    const spinner = /.spinner-border *\{([\s\S]*?)\}/.exec(cssContent);
+    expect(spinner).not.toBeNull();
+    const block = spinner[1];
+    expect(block).toContain('width: 2.5rem');
+    expect(block).toContain('height: 2.5rem');
+    expect(block).toContain('color: #246ee6');
+  });
+
+  it('should apply border-radius to alert and container', () => {
+    for (const selector of ['.container', '.alert']) {
+      const block = new RegExp(selector + ' *\\{([\\s\\S]*?)\\}').exec(cssContent);
+      expect(block).not.toBeNull();
+      expect(block[1]).toContain('border-radius');
+    }
+  });
+
+  // Edge/boundary case: media query not present on non-mobile
+  it('should not contain mobile-specific overrides at root level', () => {
+    // e.g., .card-img-top height override should only be present in @media block
+    expect(cssContent.indexOf('.card-img-top {')).toBe(-1);
+  });
+
+  // Performance/complexity: Ensure not too many selectors per rule
+  it('should not chain unrelated selectors', () => {
+    // No comma-separated selectors over three items except headings
+    const matches = cssContent.match(/[^\n]+, [^\n]+, [^\n]+, [^\n]+\s*\{/g) || [];
+    // Only h1, h2 should match
+    expect(matches.length).toBe(0);
+  });
+
+  // Security test: No URL or external font imports allowed
+  it('should not contain @import or url() references', () => {
+    expect(cssContent.includes('@import')).toBe(false);
+    expect(cssContent.includes('url(')).toBe(false);
+  });
+});

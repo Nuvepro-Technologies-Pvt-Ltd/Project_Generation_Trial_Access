@@ -1,0 +1,31 @@
+/* src/App.css */
+/* Minimal, readable, responsive app-wide CSS, to pair with Bootstrap
+   - Improved readability: larger fonts, proper headings, spacing
+   - Responsive utilities: ensure stacking of cards/lists
+   - Clean backgrounds, reduced border clutter
+*/
+
+/* Instructions:
+   - Customize the .container class to provide a light background, rounded corners, and minimum height.
+   - Add a subtle box-shadow to the container for depth.
+   - Style headings (h1, h2) with modern sans-serif fonts, bold weight, consistent color, and good spacing for readability.
+   - Design .card to have rounded corners, box-shadow, no border, and a white background for a clean appearance.
+   - Adjust .card-title for a slightly larger and bolder look to maintain hierarchy.
+   - Set padding for .card-body to ensure content is not cramped.
+   - Style .btn-primary and .btn-outline-primary with a consistent color theme, removing border clutter and adjusting background on hover for accessible feedback.
+   - Apply a more readable font-size and border-radius to input elements and form controls.
+   - Center and enlargen the spinner-border for readable, accessible loading indicators with a branded color.
+   - Make .alert components consistent with the overall rounded look.
+   - Use media queries for responsive behavior: reduced padding and border-radius on small screens, smaller image heights, and font sizes for h1/h2.
+   - Improve accessibility by tweaking focus outlines with a visible, color-contrasting border.
+
+   For each class or selector, use the variables/classes as shown and write your custom CSS for the specified effect.
+   Maintain overall minimal appearance, ensure spacing, and apply color palette for clarity and visual polish.
+*/
+
+/* Example variable/class usage:
+   .container, h1, h2, .card, .card-title, .card-body, .btn-primary, .btn-outline-primary,
+   input, .form-control, .spinner-border, .alert, .card-img-top, :focus-visible
+*/
+
+/* Begin implementing styles as per the above instructions for a minimal, responsive, and readable UI. */

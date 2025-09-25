@@ -22,25 +22,58 @@
         }
     },
     {
-        "project_name": "planning",
-        "crew_name": "planning_crew",
+        "project_name": "ingredient_recipe_search_react",
+        "crew_name": "modules_and_activities_crew",
         "usage_metrics": {
-            "total_tokens": 5461,
-            "prompt_tokens": 4260,
+            "total_tokens": 6391,
+            "prompt_tokens": 5088,
             "cached_prompt_tokens": 0,
-            "completion_tokens": 1201,
+            "completion_tokens": 1303,
             "successful_requests": 1
         }
     },
     {
-        "project_name": "planning",
-        "crew_name": "problem_statement_crew",
+        "project_name": "ingredient_recipe_search_react",
+        "crew_name": "solution_crew",
         "usage_metrics": {
-            "total_tokens": 3318,
-            "prompt_tokens": 1990,
+            "total_tokens": 92339,
+            "prompt_tokens": 77066,
+            "cached_prompt_tokens": 6784,
+            "completion_tokens": 15273,
+            "successful_requests": 15
+        }
+    },
+    {
+        "project_name": "ingredient_recipe_search_react",
+        "crew_name": "code_stubs_crew",
+        "usage_metrics": {
+            "total_tokens": 296662,
+            "prompt_tokens": 250706,
             "cached_prompt_tokens": 0,
-            "completion_tokens": 1328,
-            "successful_requests": 1
+            "completion_tokens": 45956,
+            "successful_requests": 210
+        }
+    },
+    {
+        "project_name": "ingredient_recipe_search_react",
+        "crew_name": "partial_code_crew",
+        "usage_metrics": {
+            "total_tokens": 380631,
+            "prompt_tokens": 260576,
+            "cached_prompt_tokens": 0,
+            "completion_tokens": 120055,
+            "successful_requests": 210
+        }
+    },
+    {
+        "project_name": "ingredient_recipe_search_react",
+        "crew_name": "testcases_crew",
+        "usage_metrics": {
+            "total_tokens": 1672903,
+            "prompt_tokens": 1313302,
+            "cached_prompt_tokens": 554752,
+            "completion_tokens": 359601,
+            "successful_requests": 441
         }
     },
     {
@@ -54,6 +87,6 @@
         "prompt": "Users enter an ingredient (e.g., \"tomato\") and get a list of recipes.\n\nEach recipe should show a title, ingredients, and steps.\n\nKeep the design simple with a clean search bar.\n\nUse JavaScript with a free API (like Edamam or Spoonacular)."
     },
     {
-        "Application_duration": 1.83
+        "Application_duration": 24.87
     }
 ]

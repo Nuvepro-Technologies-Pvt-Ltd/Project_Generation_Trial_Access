@@ -1,0 +1,30 @@
+<!-- 
+This is a static HTML entry file (index.html) for a React application. Such files do not contain application logic or testable JavaScript/TypeScript functions, so standard programmatic framework-based tests (like Jest, Mocha, or JUnit) are not applicable.
+
+However, production-grade projects using frameworks like Jest and Testing Library often include a static asset check or snapshot HTML check to ensure the expected entry point exists and is correct, especially if the HTML is transformed by build tooling. Below is a language- and framework-agnostic manual checklist that a QA engineer or automated CI script could follow to validate this file.
+-->
+
+<!--
+Static HTML File Validation Checklist for 'public/index.html'
+----------------------------------------------------------
+1. File exists at required path: public/index.html
+2. <div id="root"></div> is present for React app mounting
+3. <noscript> warning for JavaScript disabled users is present
+4. Essential meta tags (charset, viewport, description, theme-color) are present
+5. Favicon link uses the %PUBLIC_URL% placeholder for dynamic resolution
+6. Bootstrap CSS is included via CDN
+7. <title> tag reflects the correct app name (Recipe Finder)
+8. File is valid HTML5 and passes W3C validation
+
+Automated Validation Example (optional, non-executable within index.html):
+- Use CI tools or HTML linters (e.g., html-validate, W3C validator CLI) in your workflow to:
+  * Check for <!DOCTYPE html> declaration
+  * Ensure the <div id="root"></div> exists exactly once
+  * Verify presence and correctness of required <head> elements
+  * Confirm external resources load without error
+
+If using Jest and the project includes testing of public assets (rare), you might use Node to parse or snapshot-check HTML files.
+
+For this deliverable: Manual review of the above checklist is recommended for static files.
+
+-->

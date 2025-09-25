@@ -1,0 +1,36 @@
+/* src/index.css */
+/* Resets and global styles for consistency */
+
+/*
+Instructions:
+- Define global styles and reset default browser styles for consistency across the application.
+- Set the body element to remove default margin, specify a suitable sans-serif font stack, apply a light background color, and make sure it occupies at least the full viewport height.
+  - Variables to use:
+    - margin: Set to 0 to remove default space around the body element.
+    - font-family: Use 'Segoe UI', Arial, Helvetica, sans-serif as the default fonts.
+    - background: Assign a light color (e.g., #eaf1fb) to give a soft look to the app background.
+    - min-height: Set to 100vh to ensure the body takes up at least the full viewport height.
+- Style the #root element so it fills the full height of the screen and its children align vertically using flexbox.
+  - Variables to use:
+    - min-height: 100vh to fill the viewport.
+    - display: flex to enable a flex layout.
+    - flex-direction: column to stack children vertically.
+- You may add or expand global or helper classes as needed for your application's consistency.
+*/
+
+body {
+  /* TODO: Implement the following styles for body:
+    - Remove default margin.
+    - Set preferred font family stack.
+    - Set background color.
+    - Ensure minimum height covers viewport.
+  */
+}
+
+#root {
+  /* TODO: Implement the following styles for #root:
+    - Ensure it takes up at least the full viewport height.
+    - Use display flex.
+    - Stack children vertically (column).
+  */
+}

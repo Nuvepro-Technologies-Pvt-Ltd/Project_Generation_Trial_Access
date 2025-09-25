@@ -1,0 +1,35 @@
+/* src/App.css */
+/* Minimal, readable, responsive app-wide CSS. Implement the following:
+   - Improve readability: use larger fonts, proper heading styles, and ample spacing.
+   - Add responsive utilities to ensure stacking and appropriate behavior on small screens.
+   - Use clean backgrounds and reduce border clutter for a polished look.
+*/
+
+/* Write CSS styles for .container to set a light background, add padding, border-radius, and subtle box-shadow. */
+
+/* Add heading styles (h1, h2) to use a modern, readable font, bold weight, color, letter-spacing, and line height. */
+
+/* Define styles for .card to remove excessive borders, round the corners, and apply a soft box-shadow and background. */
+
+/* Style .card-title for slight size and weight increase over body text. */
+
+/* Adjust .card-body for smaller padding to reduce clutter. */
+
+/* Polish button classes (.btn-primary, .btn-outline-primary):
+   - Use a single accent color
+   - Soften on hover
+   - Remove default browser border styles */
+
+/* Style input and .form-control for larger font, rounded corners, and cleaner appearance. */
+
+/* Adjust .spinner-border for centralized placement, larger size, and accent color. */
+
+/* Make .alert corners rounded to blend cleanly into panels. */
+
+/* Write a media query for max-width: 767px to:
+   - Reduce .container padding and corner radius
+   - Set .card-img-top height
+   - Shrink h1, h2 font-size for mobile readability
+*/
+
+/* Add a :focus-visible rule for accessible outlines in accent color. */

@@ -1,0 +1,31 @@
+/*
+There is no executable logic or JavaScript/TypeScript code in src/index.css; only static CSS declarations.
+As such, no standard unit/integration tests using frameworks like JUnit, Jest, or Mocha apply to this file.
+
+However, you may perform visual regression testing or CSS linting to ensure correctness and maintainability.
+Below is an example CSS linting test using stylelint for static validation, along with comments for maintainers:
+*/
+
+/* stylelint-disable-next-line comment-empty-line-before */
+/* This file is validated via stylelint in the build/test pipeline. Example test configuration (stylelint.config.js):
+module.exports = {
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-prettier',
+  ],
+  rules: {
+    'color-hex-case': 'lower',
+    'string-quotes': 'single',
+    'block-no-empty': true,
+    'selector-type-no-unknown': true,
+    // Add additional rules as needed to enforce team standards
+  },
+};
+*/
+
+/*
+To test this CSS file:
+- Run `npx stylelint src/index.css` (or your preferred package runner) in CI or locally.
+- Optionally, employ visual regression tests using tools like Percy, BackstopJS, or Chromatic for UI consistency.
+- For integration, load the app and check the body and #root styles are applied as intended.
+*/
